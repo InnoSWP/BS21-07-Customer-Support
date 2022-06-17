@@ -1,4 +1,3 @@
-
 import logging
 
 import aiogram.utils.markdown as md
@@ -7,10 +6,15 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import State, StatesGroup
-from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, \
+    InlineKeyboardButton
 from aiogram.types import ParseMode
 from aiogram.utils import executor
+import databaseHandler
 
+answers = []
+
+counter = 1
 
 bot_id = 742596099
 API_TOKEN = '5505131588:AAF_LojeoLfIAlhd6UJnV36gDS-yDZei9Nw'
@@ -23,12 +27,15 @@ database = {}
 instance = {}
 isBusy = {}
 
+
 class Form(StatesGroup):
     name = State()
     surname = State()
 
+
 class Request(StatesGroup):
     answer = State()
+
 
 class Client(StatesGroup):
     answer = State()
@@ -53,6 +60,7 @@ def deleteUser(nameDatabase, id):
         print(i, j["Name"], j["Surname"], j["Type"], file=file)
     file.close()
 
+
 def addUser(nameDatabase, id, name, surname):
     global database
     file = open(nameDatabase, "a")
@@ -61,13 +69,16 @@ def addUser(nameDatabase, id, name, surname):
     isBusy[int(id)] = "0"
     file.close()
 
+
 @dp.message_handler(commands=["start"])
 async def send_welcome(message: types.Message):
     if message.chat.id in database:
         await message.answer(f"{database[message.chat.id]['Name']}, welcome back!")
     else:
         await Form.name.set()
-        await message.answer("Hello! Nice to meet you.\n\nIf you want join to our team, please, register in system.\nWrite your name.")
+        await message.answer(
+            "Hello! Nice to meet you.\n\nIf you want join to our team, please, register in system.\nWrite your name.")
+
 
 @dp.message_handler(commands=["delete_me"])
 async def delete_me(message: types.Message):
@@ -77,12 +88,14 @@ async def delete_me(message: types.Message):
     else:
         await message.answer("You are not register yet!")
 
+
 @dp.message_handler(commands=["help"])
 async def send_welcome(message: types.Message):
     await message.answer("List of commands:\n"
                          "    /start - If you not register yet, you can register in system.\n"
                          "    /delete_me - You can delete your user from system.\n"
                          "    /link - Get link to the Google Sheets database ")
+
 
 @dp.message_handler(commands=["link"])
 async def send_welcome(message: types.Message):
@@ -119,6 +132,7 @@ async def process_name(message: types.Message, state: FSMContext):
     await message.answer(f"Thanks. You're registered in the system.")
     await state.finish()
 
+
 @dp.message_handler(state=Form.surname)
 async def process_name(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
@@ -129,8 +143,9 @@ async def process_name(message: types.Message, state: FSMContext):
     await message.answer(f"Thanks. You're registered in the system.")
     await state.finish()
 
+
 @dp.message_handler(commands=["send_request"])
-async def send_messages(message: types.Message):
+async def send_request(message: types.Message):
     if database[message.chat.id]["Type"] == "admin":
         await Request.answer.set()
         await message.answer("Write text of message:")
@@ -140,12 +155,14 @@ async def send_messages(message: types.Message):
 
 @dp.message_handler(state=Request.answer)
 async def text_request(message: types.Message, state: FSMContext):
+    global counter
     async with state.proxy() as data:
         data['text'] = message.text
     async with state.proxy() as data:
-        for i in database:
-            await bot.send_message(i, data['text'])
+        await send_all_request(counter, message.text)
     await state.finish()
+    databaseHandler.sheetWriteQuestion(counter, data['text'])
+    counter += 1
     await message.answer("Messages sent!")
 
 
@@ -160,8 +177,11 @@ async def process_callback_button1(callback_query: types.CallbackQuery):
         await bot.answer_callback_query(callback_query.id)
         instance[number] = {"id": callback_query.from_user.id, "status": "Open"}
         isBusy[callback_query.from_user.id] = number
-        await bot.send_message(callback_query.from_user.id, text)
-        await bot.send_message(bot_id, f"{number}==={database[callback_query.from_user.id]['Name']} connected to the chat!")
+        await bot.send_message(callback_query.from_user.id, "Here is the text of the question. Please answer with one "
+                                                            "message!\n\n" + text)
+        await bot.send_message(bot_id,
+                               f"{number}==={database[callback_query.from_user.id]['Name']} connected to the chat!")
+
 
 async def send_all_request(number, text):
     if number in instance:
@@ -187,6 +207,10 @@ async def new_request(message: types.Message):
         await send_all_request(int(number), text)
     elif isBusy[message.chat.id] != "0":
         await bot.send_message(bot_id, str(isBusy[message.chat.id]) + "===" + message.text)
+        databaseHandler.sheetWriteAnswer(int(isBusy[message.chat.id]), message.text)
+        # isBusy[instance[int(isBusy[message.chat.id])]["id"]] = "0"
+        # await bot.send_message(instance[int(isBusy[message.chat.id])]["id"], "Thank you. Request closed!")
+        # instance.pop(int(isBusy[message.chat.id]))
 
 
 def start_bot():
