@@ -3,7 +3,7 @@ import httplib2
 from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 
-CREDENTIALS_FILE = 'creds.json'
+CREDENTIALS_FILE = 'testing/creds.json'
 spreadsheet_id = '1PwgkG6nqIQqj7KiXRv19Hcy0igg9EfS6kkG2gfVDgzI'
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name(
