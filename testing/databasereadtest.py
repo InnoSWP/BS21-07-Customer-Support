@@ -5,6 +5,6 @@ def setup():
     print("READ TESTING")
 
 
-def read_test():
+def test_read():
     assert databaseHandler.sheetReadFirst() == ([['Questions']])
     print("Database reading is accessible!")
