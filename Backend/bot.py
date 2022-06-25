@@ -12,12 +12,11 @@ from aiogram.types import ParseMode
 from aiogram.utils import executor
 import databaseHandler
 
-answers = []
 
-counter = 1
+counter = databaseHandler.sheetRows()
 
 bot_id = 742596099
-API_TOKEN = '5505131588:AAF_LojeoLfIAlhd6UJnV36gDS-yDZei9Nw'
+API_TOKEN = '5465574210:AAHmn0cQlDJNSCROnbHnRLQ7JvixZofw4UQ'
 logging.basicConfig(level=logging.INFO)
 
 bot = Bot(token=API_TOKEN)
@@ -68,6 +67,7 @@ def addUser(nameDatabase, id, name, surname):
     database[int(id)] = {"Name": name, "Surname": surname, "Type": "user"}
     isBusy[int(id)] = "0"
     file.close()
+
 
 
 @dp.message_handler(commands=["start"])
@@ -155,15 +155,27 @@ async def send_request(message: types.Message):
 
 @dp.message_handler(state=Request.answer)
 async def text_request(message: types.Message, state: FSMContext):
-    global counter
     async with state.proxy() as data:
         data['text'] = message.text
-    async with state.proxy() as data:
-        await send_all_request(counter, message.text)
-    await state.finish()
-    databaseHandler.sheetWriteQuestion(counter, data['text'])
-    counter += 1
-    await message.answer("Messages sent!")
+
+    global counter
+    values = databaseHandler.sheetRead()
+    sent = False
+    for value in values:
+        if value[0] == data['text'] and len(value) != 1:
+            await bot.send_message(bot_id, value[1])
+            sent = True
+            break
+
+    if not sent:
+        databaseHandler.sheetWriteQuestion(counter, data['text'])
+        async with state.proxy() as data:
+            await send_all_request(counter, message.text)
+        await state.finish()
+        await message.answer("Messages sent!")
+        counter += 1
+    else:
+        await state.finish()
 
 
 @dp.callback_query_handler(lambda c: c.data and c.data.startswith('open'))
@@ -206,11 +218,14 @@ async def new_request(message: types.Message):
         text = message.text.split('===')[1]
         await send_all_request(int(number), text)
     elif isBusy[message.chat.id] != "0":
-        await bot.send_message(bot_id, str(isBusy[message.chat.id]) + "===" + message.text)
-        databaseHandler.sheetWriteAnswer(int(isBusy[message.chat.id]), message.text)
-        # isBusy[instance[int(isBusy[message.chat.id])]["id"]] = "0"
-        # await bot.send_message(instance[int(isBusy[message.chat.id])]["id"], "Thank you. Request closed!")
-        # instance.pop(int(isBusy[message.chat.id]))
+        if message.text == "close":
+            await bot.send_message(bot_id, str(isBusy[message.chat.id]) + "===closed!")
+            isBusy[instance[int(isBusy[message.chat.id])]["id"]] = "0"
+            await bot.send_message(message.chat.id, "Thank you. Request closed!")
+            instance.pop(int(isBusy[message.chat.id]))
+        else:
+            await bot.send_message(bot_id, str(isBusy[message.chat.id]) + "===" + message.text)
+            databaseHandler.sheetWriteAnswer(int(isBusy[message.chat.id]), message.text)
 
 
 def start_bot():
