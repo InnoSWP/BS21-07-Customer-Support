@@ -8,6 +8,7 @@ function App() {
     settrtiggerState(!triggerState);
     console.log (triggerState);
   }
+  
   return (  
     <div className="App">
         <h1>support chat</h1>
