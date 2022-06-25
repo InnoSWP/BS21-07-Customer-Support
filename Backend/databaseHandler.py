@@ -52,7 +52,6 @@ def sheetWriteAnswer(number, answer):
 
 # Write in the A column
 def sheetWriteQuestion (number, question):
-    number
     number += 1
     writeRange = "A" + str(number) + ":" + "A" + str(number)
     values = service.spreadsheets().values().batchUpdate(
