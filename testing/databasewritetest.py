@@ -7,3 +7,6 @@ def setup():
 def write_test():
     assert databaseHandler.sheetWriteSmth('Test') == [['Test']]
     print("Database writing is accessible!")
+
+setup()
+write_test()
