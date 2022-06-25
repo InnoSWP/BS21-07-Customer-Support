@@ -34,5 +34,9 @@ jobs:
         run: pip install -r requirements.txt
       
       # Runs a set of commands using the runners shell
-      # - name: Run pytest
-      #  run: pytest -s test.py
+      - name: Run write test
+        run: pytest -s database_write_test.py
+        
+     # Runs a set of commands using the runners shell  
+      - name: Run read test
+        run: pytest -s database_read_test.py
