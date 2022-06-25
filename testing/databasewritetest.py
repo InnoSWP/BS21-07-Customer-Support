@@ -1,12 +1,8 @@
 import databaseHandler
-import pytest
 
 def setup():
     print("WRITE TESTING")
 
-def write_test():
+def test_write():
     assert databaseHandler.sheetWriteSmth('Test') == [['Test']]
     print("Database writing is accessible!")
-
-setup()
-write_test()
