@@ -10,13 +10,11 @@ function App() {
   }
   return (  
     <div className="App">
-
         <h1>support chat</h1>
         <button onClick={setTR} id='innoOPlogo' className="open-button" ></button>
         <main>
           <Chat trigger={triggerState} setTrigger = {settrtiggerState}></Chat>
         </main> 
-
     </div>
   );
 }
