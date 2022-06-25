@@ -1,5 +1,5 @@
 import logging
-
+from telethon import TelegramClient, sync, events
 import aiogram.utils.markdown as md
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
@@ -12,12 +12,21 @@ from aiogram.types import ParseMode
 from aiogram.utils import executor
 import databaseHandler
 
-
 counter = databaseHandler.sheetRows()
+
+api_id = 16961014
+api_hash = '5a99188f19d18c44778b8eed6d49a3d5'
+
+def send_message(message):
+    client = TelegramClient('SWPbot', api_id, api_hash)
+    client.start()
+    client.send_message('@swp_g7_bs21_backend_bot', message)
 
 bot_id = 742596099
 API_TOKEN = '5465574210:AAHmn0cQlDJNSCROnbHnRLQ7JvixZofw4UQ'
 logging.basicConfig(level=logging.INFO)
+
+
 
 bot = Bot(token=API_TOKEN)
 storage = MemoryStorage()
@@ -40,7 +49,8 @@ class Client(StatesGroup):
     answer = State()
 
 
-def readData(nameDatabase):
+
+def read_data(nameDatabase):
     global database
     file = open(nameDatabase)
     for i in file:
@@ -51,7 +61,7 @@ def readData(nameDatabase):
     file.close()
 
 
-def deleteUser(nameDatabase, id):
+def delete_user(nameDatabase, id):
     global database
     database.pop(id)
     file = open(nameDatabase, "w")
@@ -60,7 +70,7 @@ def deleteUser(nameDatabase, id):
     file.close()
 
 
-def addUser(nameDatabase, id, name, surname):
+def add_user(nameDatabase, id, name, surname):
     global database
     file = open(nameDatabase, "a")
     print(id, name, surname, "user", file=file)
@@ -84,7 +94,7 @@ async def send_welcome(message: types.Message):
 async def delete_me(message: types.Message):
     if message.chat.id in database:
         await message.answer(f"{database[message.chat.id]['Name']}, your user successful deleted!")
-        deleteUser("volunteers.txt", message.chat.id)
+        delete_user("volunteers.txt", message.chat.id)
     else:
         await message.answer("You are not register yet!")
 
@@ -128,7 +138,7 @@ async def process_name(message: types.Message, state: FSMContext):
         data['surname'] = message.text
     async with state.proxy() as data:
         database[message.chat.id] = {"Name": data["name"], "Surname": data["surname"]}
-        addUser("volunteers.txt", id=message.chat.id, name=data["name"], surname=data["surname"])
+        add_user("volunteers.txt", id=message.chat.id, name=data["name"], surname=data["surname"])
     await message.answer(f"Thanks. You're registered in the system.")
     await state.finish()
 
@@ -139,7 +149,7 @@ async def process_name(message: types.Message, state: FSMContext):
         data['surname'] = message.text
     async with state.proxy() as data:
         database[message.chat.id] = {"Name": data["name"], "Surname": data["surname"]}
-        addUser("volunteers.txt", id=message.chat.id, name=data["name"], surname=data["surname"])
+        add_user("volunteers.txt", id=message.chat.id, name=data["name"], surname=data["surname"])
     await message.answer(f"Thanks. You're registered in the system.")
     await state.finish()
 
@@ -229,5 +239,5 @@ async def new_request(message: types.Message):
 
 
 def start_bot():
-    readData("volunteers.txt")
+    read_data("volunteers.txt")
     executor.start_polling(dp, skip_updates=True)
