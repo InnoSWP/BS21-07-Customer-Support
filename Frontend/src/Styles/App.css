@@ -1,0 +1,57 @@
+* {
+    margin: 0x;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+}
+
+.App{
+    width: 800px;
+}
+/*main {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}*/
+
+.open-button{
+    background-color: #68b32e;
+    color: white;
+    /*padding: 1em 1em;*/
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0.5rem;
+    right: 1rem;
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+}
+
+
+#innoOPlogo {
+   /* width: 100px;
+    height: 100px;*/
+    background-image: url('../img/inno-open.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#innoCLlogo {
+    width: 100px;
+    height: 100px;
+    background-image: url('../img/inno-open.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+

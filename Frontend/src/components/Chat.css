@@ -1,0 +1,97 @@
+.chat{
+    background-color: white;
+}
+
+.chat-inner{
+    position: fixed;
+    width: 20vw;
+    height: 60vh;
+    min-width: 20rem;
+    min-height: 30rem;
+    bottom: 8rem;
+    right: 1rem;
+    background-color: white;
+    border-radius: 2.2rem;
+    border: solid 2px;
+    border-color:#68b32e;
+    
+    display: grid; 
+    grid-template-rows: 11% 75% 14%;
+}
+
+.close-btn{
+    position: absolute;
+    background-color: white;
+    border: 1px solid #315317;
+    top: 1vh;
+    right: 1vw;
+}
+
+.msgPoll{
+    padding: 0.1rem;
+    border: 1px solid black;
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /*grid-area: auto;*/
+}
+
+.typePoll{
+    padding:1%;
+    background-color: white;
+    /*border: 1px solid black;*/
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.sendBox{
+    display: contents;
+    justify-self: center;
+    align-items: center;
+    background-color: white;
+}
+
+.areaType{
+    border: 3px solid #68b32e;
+    background-color: white;
+    border-radius: 1rem;
+    height: 60%;
+    width: 80%;
+    
+}
+
+.header{
+    display: flex;
+    padding: 1.5rem;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    background-color: #68b32e;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    /*border: 1px solid black;*/
+}
+
+#send {
+    width: 20%;
+    height: 70%;
+    background-image: url('../img/btnSend.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.sendBtn{
+    padding: 2px 2px;
+    border: none;
+    background-color: transparent;
+    align-items: right;
+}
+
+.usId{
+    background-color: #68b32e;
+    align-items: center;
+    justify-content: center;
+}

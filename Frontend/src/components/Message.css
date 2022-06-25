@@ -1,0 +1,33 @@
+.msgOut{
+    display: flex;
+    position: relative;
+    padding: 1rem;
+    left: 4rem;
+    width: 15vw;
+    margin: 1rem;
+    min-width: 14rem;
+    height: 5vh;
+    min-height: 3rem;
+    justify-content: right;
+    background-color: #54ac47;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+
+.msgInp{
+    display: flex;
+    position: relative;
+    padding: 1rem;
+    left: 1rem;
+    width: 15vw;
+    min-width: 10rem;
+    height: 5vh;
+    min-height: 3rem;
+    margin: 1rem;
+    justify-content: left;
+    background-color: #e7e7e7;
+    border-top-right-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
