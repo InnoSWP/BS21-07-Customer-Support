@@ -34,7 +34,6 @@ def sheetRows():
 
 # Write in the B column
 def sheetWriteAnswer(number, answer):
-    number
     number += 1
     writeRange = "B" + str(number) + ":" + "B" + str(number)
     values = service.spreadsheets().values().batchUpdate(
