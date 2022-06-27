@@ -3,7 +3,7 @@
 
 ## Description
 
-This project is an implementation of seamless customer support tool for different websites using the API which retranslates questions of users from the web application to telegram bot connected to Q&A database and volunteer team. Almost all customer-oriented websites nowadays have a tool to ask a question to the Q&A  team, but most of them require the team to answer from the website itself, which creates a need to switch platforms if there are different websites.
+This project is an implementation of a seamless customer support tool for different websites using the API which retranslates questions of users from the web application to telegram bot connected to Q&A database and volunteer team. Almost all customer-oriented websites nowadays have a tool to ask a question to the Q&A  team, but most of them require the team to answer from the website itself, which creates a need to switch platforms if there are different websites.
 
 The main advantage of this tool is its integrability. It can be used for a high amount of diverse websites without a volunteer team needing to change their messaging platform.
 
