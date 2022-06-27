@@ -32,8 +32,8 @@ The project uses python3 with aiogram and apiclient APIs for telegram bot and da
 ## Team members
 - Damir Afliatonov
 - Ivan Kobets
-- Askar Kadyrgulov
 - Makar Vavilov
+- Askar Kadyrgulov
 - David Polischuk
 - Nikolai Ershov
 
