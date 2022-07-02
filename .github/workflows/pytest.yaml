@@ -45,3 +45,9 @@ jobs:
       - name: Run bot test
         run: pytest -s testing/echo_handler_test.py
 
+      - name: Run server
+        run: python -m flask run > /dev/null 1&> /dev/null  2&> /dev/null &
+        
+      # Runs a set of commands using the runners shell
+      - name: Run servertest
+        run: pytest -s testing/servertest.py
