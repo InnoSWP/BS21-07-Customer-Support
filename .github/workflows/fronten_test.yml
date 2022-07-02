@@ -25,10 +25,22 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Compile site
+    - name: NPM Install
       run: |
         cd Frontend
         npm install
+
+    - name: NPM CI
+      run: |
+        cd Frontend
         npm ci
+
+    - name: NPM Build
+      run: |
+        cd Frontend
         npm run build --if-present
+
+    - name: NPM Test
+      run: |
+        cd Frontend
         npm test
