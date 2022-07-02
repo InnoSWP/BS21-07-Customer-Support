@@ -13,14 +13,14 @@ The main advantage of this tool is its integrability. It can be used for a high 
 
 Volunteer starts the chat with the telegram bot and registers into the system. Volunteer is then added into the database of volunteers and marked as "user".
 
-<img src="TG-bot-example.png" alt="drawing" width="600"/>
+<img src="images/TG-bot-example.png" alt="drawing" width="600"/>
 
 
 When user asks a question in the web application, it is handed to the telegram bot, which sends requests for answer to all of volunteers from the list.
 
-<img src="Request-1.png" alt="drawing" width="300"/>
+<img src="images/Request-1.png" alt="drawing" width="300"/>
 
-<img src="Request-2.png" alt="drawing" width="500"/>
+<img src="images/Request-2.png" alt="drawing" width="500"/>
 
 
 **Web application**
@@ -28,14 +28,14 @@ When user asks a question in the web application, it is handed to the telegram b
 User opens the web application and asks questions in it, getting answers afterwards. User also can refresh the web page or even close it and the chat with volunteer will remain.
 
 
-<img src="Web-design-example.png" alt="drawing" width="300"/>
+<img src="images/Web-design-example.png" alt="drawing" width="300"/>
 
 
 **Database**
 
 After getting the answer, bot sends it back to the website and also adds it to the Google Sheets database. For every next question, bot will check if there is any similar enough questions with answers in the database and, if so, answer to users with it immediately.
 
-<img src="Google-sheets.png" alt="drawing" width="500"/>
+<img src="images/Google-sheets.png" alt="drawing" width="500"/>
 
 
 ## How to use
@@ -61,7 +61,7 @@ The project uses Python3 with Aiogram, SQLite and Apiclient APIs for telegram bo
 
 ## Badges
 
-<img src="Badge.png" alt="drawing" width="150"/>
+<img src="images/Badge.png" alt="drawing" width="150"/>
 
 ## Team members
 - Damir Afliatonov
