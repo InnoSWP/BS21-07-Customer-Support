@@ -13,7 +13,7 @@ The main advantage of this tool is its integrability. It can be used for a high 
 
 Volunteer starts the chat with the telegram bot and registers into the system
 
-![Visualisation demo.](TG bot example.png)
+![Visualisation demo.](TG-bot-example.png)
 
 
 ## How to use
