@@ -15,7 +15,7 @@ Volunteer starts the chat with the telegram bot and registers into the system. V
 
 ![Visualisation demo.](TG-bot-example.png)
 
-<img src="TG-bot-example.png" alt="drawing" width="200"/>
+<img src="TG-bot-example.png" alt="drawing" width="500"/>
 
 User opens the web application and asks questions in it, getting answers afterwards. User also can refresh the web page or even close it and the chat with volunteer will remain.
 
