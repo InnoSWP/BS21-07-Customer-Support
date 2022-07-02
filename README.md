@@ -18,7 +18,7 @@ Volunteer starts the chat with the telegram bot and registers into the system. V
 User opens the web application and asks questions in it, getting answers afterwards. User also can refresh the web page or even close it and the chat with volunteer will remain.
 
 
-<img src="Web-design-example.png" alt="drawing" width="500"/>
+<img src="Web-design-example.png" alt="drawing" width="300"/>
 
 
 When user asks a question in the web application, it is handed to the telegram bot, which
