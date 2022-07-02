@@ -11,14 +11,16 @@ The main advantage of this tool is its integrability. It can be used for a high 
 
 **Telegram bot**
 
-Volunteer starts the chat with the telegram bot and registers into the system
+Volunteer starts the chat with the telegram bot and registers into the system. Volunteer is then added into the database of volunteers and marked as "user".
 
 ![Visualisation demo.](TG-bot-example.png)
 
 
-User opens the web application and asks questions in it, getting answers afterwards
+User opens the web application and asks questions in it, getting answers afterwards. User also can refresh the web page or even close it and the chat with volunteer will remain.
 
 ![Visualisation demo.](Web-design-example.png)
+
+
 
 ## How to use
 
