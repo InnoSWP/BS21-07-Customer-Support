@@ -59,7 +59,7 @@ The project uses Python3 with Aiogram, SQLite and Apiclient APIs for telegram bo
 
 ## Badges
 
-<img src="Badge.png" alt="drawing" width="300"/>
+<img src="Badge.png" alt="drawing" width="200"/>
 
 ## Team members
 - Damir Afliatonov
