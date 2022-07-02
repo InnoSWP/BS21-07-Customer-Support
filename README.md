@@ -40,7 +40,9 @@ After getting the answer, bot sends it back to the website and also adds it to t
 
 ## How to use
 
-**Tutorial**
+Admin should run the server and the tg bot separately. Now, after activating the bot, it will receive messages and add volunteers to the list in "volunteers.txt". To get the link to the Google Sheets database, user can write "/link" to the bot. Only the bot and admin can manage the database to avoid errors.
+
+Next, after the web app is activated, app session can be launched locally. User can write the question to start the request for answer.
 
 ## Features
 
