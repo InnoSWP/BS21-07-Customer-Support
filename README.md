@@ -16,6 +16,10 @@ Volunteer starts the chat with the telegram bot and registers into the system
 ![Visualisation demo.](TG-bot-example.png)
 
 
+User opens the web application and asks questions in it, getting answers afterwards
+
+![Visualisation demo.](Web-design-example.png)
+
 ## How to use
 
 **Tutorial**
