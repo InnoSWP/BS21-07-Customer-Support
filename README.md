@@ -23,7 +23,7 @@ User opens the web application and asks questions in it, getting answers afterwa
 
 When user asks a question in the web application, it is handed to the telegram bot, which sends requests for answer to all of volunteers from the list.
 
-<img src="Request-1.png" alt="drawing" width="500"/>
+<img src="Request-1.png" alt="drawing" width="300"/>
 
 <img src="Request-2.png" alt="drawing" width="500"/>
 
