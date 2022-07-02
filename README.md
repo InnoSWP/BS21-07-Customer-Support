@@ -27,6 +27,10 @@ When user asks a question in the web application, it is handed to the telegram b
 
 <img src="Request-2.png" alt="drawing" width="500"/>
 
+After getting the answer, bot sends it back to the website and also adds it to the Google Sheets database. For every next question, bot will check if there is any similar enough questions with answers in the database and, if so, answer to users with it immediately.
+
+<img src="Google-sheets.png" alt="drawing" width="500"/>
+
 ## How to use
 
 **Tutorial**
