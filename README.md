@@ -15,11 +15,6 @@ Volunteer starts the chat with the telegram bot and registers into the system. V
 
 <img src="TG-bot-example.png" alt="drawing" width="600"/>
 
-User opens the web application and asks questions in it, getting answers afterwards. User also can refresh the web page or even close it and the chat with volunteer will remain.
-
-
-<img src="Web-design-example.png" alt="drawing" width="300"/>
-
 
 When user asks a question in the web application, it is handed to the telegram bot, which sends requests for answer to all of volunteers from the list.
 
@@ -27,9 +22,21 @@ When user asks a question in the web application, it is handed to the telegram b
 
 <img src="Request-2.png" alt="drawing" width="500"/>
 
+
+**Web application**
+
+User opens the web application and asks questions in it, getting answers afterwards. User also can refresh the web page or even close it and the chat with volunteer will remain.
+
+
+<img src="Web-design-example.png" alt="drawing" width="300"/>
+
+
+**Database**
+
 After getting the answer, bot sends it back to the website and also adds it to the Google Sheets database. For every next question, bot will check if there is any similar enough questions with answers in the database and, if so, answer to users with it immediately.
 
 <img src="Google-sheets.png" alt="drawing" width="500"/>
+
 
 ## How to use
 
@@ -37,7 +44,10 @@ After getting the answer, bot sends it back to the website and also adds it to t
 
 ## Features
 
-**Features**
+ - Using cookies for storing user sessions even after closing;
+ - Using requests for answers to avoid interruptions in answers;
+ - Storing previously answered questions;
+ - Using existing answers to answer new similar questions.
 
 ## Installation
 
@@ -45,7 +55,7 @@ After getting the answer, bot sends it back to the website and also adds it to t
 
 ## Frameworks
 
-The project uses python3 with aiogram and apiclient APIs for telegram bot and database implementation and JS React for the web tool part
+The project uses Python3 with Aiogram, SQLite and Apiclient APIs for telegram bot and database implementation and Flask framework for the web tool part.
 
 ## Badges
 
