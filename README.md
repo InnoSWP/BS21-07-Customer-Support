@@ -52,7 +52,7 @@ Next, after the web app is activated, app session can be launched locally. User 
 
 ## Installation
 
-To install the project, download it and separately run the frontend and backend folders. Change "bot_id" variable in bot.py to your id.
+To install the project, download it and separately run the frontend and backend folders. Change "bot_id" variable in bot.py to your id to get reports from the bot.
 
 ## Frameworks
 
