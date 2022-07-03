@@ -1,0 +1,22 @@
+p.user {
+    border-radius: 5px;
+    background-color: lightgreen;
+    float: right;
+    margin: 10px;
+}
+
+p.bot {
+    border-radius: 5px;
+    background-color: deepskyblue;
+    float: left;
+    margin: 10px;
+}
+
+div.user {
+    float: right;
+    width: 51%;
+}
+div.bot {
+    float: left;
+    width: 51%;
+}
